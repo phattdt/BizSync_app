@@ -1,6 +1,10 @@
-import { DollarSign, ArrowUp } from "lucide-react";
+import { DollarSign, ArrowDown, ArrowUp } from "lucide-react";
 import './style.css';
 const StatsCard = () => {
+  const changePercentage = 55;
+
+  const isIncrease = changePercentage > 0;
+  const changeAbsolute = Math.abs(changePercentage);
   return (
     <div className="dashboard-item bg-[#2C3A58] p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
       <div className="container_ic flex items-center justify-between">
@@ -13,8 +17,8 @@ const StatsCard = () => {
         </div>
       </div>
       <div className="mt-4 flex items-center">
-        <span className="text-sm text-green-400">
-          <ArrowUp size={16} /> +55%
+        <span className={`text-sm ${isIncrease ? 'text-green-400' : 'text-red-400'}`}>
+        {isIncrease ? <ArrowUp size={16} /> : <ArrowDown size={16} />} {changeAbsolute}%
         </span>
         <span className="text-sm text-gray-400 ml-2">Since last month</span>
       </div>
